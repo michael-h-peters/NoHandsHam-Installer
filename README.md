@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-0.20.0-x64.exe /quiet                     # silent
-.\NoHandsHam-0.20.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-0.20.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-0.20.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.0.0-x64.exe /quiet                     # silent
+.\NoHandsHam-1.0.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.0.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.0.0-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,38 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.0.0 — 23 August 2026
+
+- **New:** **transcribe on this computer**, for nothing a minute. Every minute of
+  audio used to be billed — by the minute of *audio*, not by the word, so a three-hour
+  net that was mostly silence cost three hours. A new **Transcription** row on the
+  settings pane offers *This computer* instead of *OpenAI*, and with it chosen no API
+  key is used, nothing is sent anywhere, and a session works with the internet
+  unplugged.
+- **New:** the server and the model are fetched for you, once, when you press
+  **Download** — not because you clicked a radio button, because half a gigabyte is
+  not a side effect. Four models to choose from: tiny.en 74 MB, base.en 141 MB,
+  small.en 465 MB (the default, and the best trade for radio) and medium.en 1.4 GB.
+  They live under `%AppData%`, which an install never touches, so an upgrade does not
+  re-download them.
+- **What it costs**, said in the pane and in the manual rather than found out during a
+  net: call signs through noise are harder for a model on your desk than for the
+  hosted one, and there is no live partial text — text arrives one finished utterance
+  at a time. The status line does not claim otherwise.
+- The server is [whisper.cpp](https://github.com/ggml-org/whisper.cpp), MIT-licensed
+  and fetched from upstream, pinned by version and checked against a SHA-256 recorded
+  in the program — this downloads an executable and then runs it. It binds to loopback
+  so nothing on your network can reach it, opens no console window, and closes when
+  NoHandsHam does.
+- **Changed:** with *This computer* chosen the API key line reads **not in use** rather
+  than reporting a fault. The local server has no key to check, and a working setup
+  should not be labelled rejected.
+- **New:** at the command line, `-local` and `-local-model`. The window and the command
+  line have always been the same program underneath, and neither should be able to do
+  something the other cannot.
+- OpenAI stays the default, and nothing about an existing install changes unless you
+  touch the new row.
 
 ### 0.20.0 — 23 August 2026
 

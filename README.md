@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-0.17.1-x64.exe /quiet                     # silent
-.\NoHandsHam-0.17.1-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-0.17.1-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-0.17.1-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-0.18.0-x64.exe /quiet                     # silent
+.\NoHandsHam-0.18.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-0.18.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-0.18.0-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,18 @@ the settings pane switches the checking off for good.
 ---
 
 ## Releases
+
+### 0.18.0 — 23 August 2026
+
+- **New:** **Publish to nohands.net** — the net log can go on the web while the net
+  runs, updating as the list changes. Sign in at nohands.net to see it; only you can,
+  and there is no public link.
+- **Off unless you tick it**, and it asks first. This is the first thing NoHandsHam
+  sends anywhere that is not yours — other stations' call signs, names and towns — so
+  upgrading never switches it on.
+- Needs a licence key; a copy on trial cannot publish.
+- **New:** a dropped connection costs nothing. The net carries on, the window says it
+  is still trying, and the next send catches the server up.
 
 ### 0.17.1 — 23 August 2026
 

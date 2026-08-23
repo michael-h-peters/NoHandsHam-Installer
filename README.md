@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-0.19.0-x64.exe /quiet                     # silent
-.\NoHandsHam-0.19.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-0.19.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-0.19.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-0.20.0-x64.exe /quiet                     # silent
+.\NoHandsHam-0.20.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-0.20.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-0.20.0-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -53,11 +53,34 @@ The version is at the foot of the window beside the copyright, and is the first
 thing worth quoting in a bug report. The program checks once a day whether a newer
 release has been published here and says one line when there is one. It never
 downloads or installs anything on your behalf, and unticking **Check version** on
-the settings pane switches the checking off for good.
+the top strip of the window switches the checking off for good.
 
 ---
 
 ## Releases
+
+### 0.20.0 — 23 August 2026
+
+- **New:** checking a station into the net log is one click. Every entry in the
+  transcript that names a station now carries a second box beside the roster's, and
+  ticking it is the whole check-in — at the time the entry was heard, with the number
+  the station took said at the foot of the window. It used to cost a dialog: click the
+  entry, wait for the editor, tick *In the net log*, press **Save**.
+- **New:** one station is usually on several entries, and they all agree. Tick the box
+  on any of them and every other entry naming that station shows ticked; untick any
+  one and they all clear. The net log window need not be open for it, or at all — tick
+  your way through the net and read the list at the end.
+- *In the net log* is still in the entry editor, for the check-in you make while
+  putting a mis-heard call sign right. Both boxes are the same act.
+- **New:** **call signs to ignore**, on the Mode row and kept between runs — for the
+  repeater identifier, the club name read out, the frequency spoken as letters. One on
+  that list is dropped where it is first heard rather than tidied up afterwards: it
+  never reaches the transcript, the roster, the prompt, a QRZ lookup or a check-in box.
+- **Changed:** the version check moved to the top strip of the control window, beside
+  *Getting started* and *Manual*. It was the last row of the settings pane, which is
+  taller than the window, so on a laptop-fitted window it sat the better part of eight
+  hundred pixels below the fold — the one launch in a month that had news put the news
+  where nobody was looking.
 
 ### 0.19.0 — 23 August 2026
 

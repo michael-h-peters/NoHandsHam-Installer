@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-0.18.0-x64.exe /quiet                     # silent
-.\NoHandsHam-0.18.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-0.18.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-0.18.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-0.19.0-x64.exe /quiet                     # silent
+.\NoHandsHam-0.19.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-0.19.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-0.19.0-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,24 @@ the settings pane switches the checking off for good.
 ---
 
 ## Releases
+
+### 0.19.0 — 23 August 2026
+
+- **Fixed:** running a second net without pressing **Clear** first published it under
+  the *first* net's identifier, writing over it. Three nets went up as one row. Clear
+  now always ends the net, including on a list already emptied by hand, which was the
+  hole behind it.
+- **New:** the publish line names the net and when it started — *Published “Tuesday
+  Traffic Net” to nohands.net at 20:14:07, net started 19:58.* The start time is the
+  tell: a net that says it began this morning when you called this one ten minutes ago
+  is the fault above, visible without opening a browser.
+- **Changed:** everyone signed in to nohands.net can now read every net published to
+  it, including the stations who checked in. Accounts there are approved by hand, so
+  it is a shared log among approved accounts on one site rather than the open web;
+  there is still no public link, and deleting a net you published is yours alone.
+- **Changed:** because that replaces a promise the old wording made, the dialog goes
+  up once more with the new text if you already have publishing switched on. Keep
+  publishing or stop; stopping leaves what is already on the server where it is.
 
 ### 0.18.0 — 23 August 2026
 

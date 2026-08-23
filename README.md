@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-0.17.0-x64.exe /quiet                     # silent
-.\NoHandsHam-0.17.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-0.17.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-0.17.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-0.17.1-x64.exe /quiet                     # silent
+.\NoHandsHam-0.17.1-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-0.17.1-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-0.17.1-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -59,6 +59,18 @@ the settings pane switches the checking off for good.
 
 ## Releases
 
+### 0.17.1 — 23 August 2026
+
+- **Changed:** the net log's small print is behind a **Help** pull-down at the top of
+  the window — three topics, plus the manual. It was a paragraph above the table,
+  read once and then charging four lines of table for the life of the install.
+- **Changed:** the topics say *more* than the paragraph did. A dialog has room for
+  what a strip above a table has to cut.
+- The **Save…** reminder stayed on the window, beside the count. Of the four things
+  that paragraph said it is the only one with a deadline, and learning it from a menu
+  you never opened means learning it after closing the app on an evening's work.
+- About twelve check-ins are visible at once, up from eleven.
+
 ### 0.17.0 — 23 August 2026
 
 - **New:** the net log has a header — the net's name, net control's call sign, name
@@ -69,8 +81,9 @@ the settings pane switches the checking off for good.
 - **New:** your own name and QTH are looked up on QRZ.com — the one lookup the
   program never used to make. Both stay editable, and what you type is not
   overwritten by an answer arriving later.
-- **Changed:** the net log window opens larger and shows about a dozen check-ins at
-  once.
+- **Changed:** the net log window opens larger, and its two paragraphs of small
+  print became one, to pay for the height the header takes. About eleven check-ins
+  are visible at once.
 
 ### 0.16.0 — 22 August 2026
 

@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.0.0-x64.exe /quiet                     # silent
-.\NoHandsHam-1.0.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.0.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.0.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.0-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.0-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,39 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.0 — 25 August 2026
+
+- **New:** **transcribe on the graphics card.** Transcribing on this computer
+  arrived in 1.0.0 and has run on the processor ever since. If the machine has an
+  NVIDIA card, a **Use the graphics card** box appears in the *Transcription* row and
+  the work goes there instead — quicker at the arithmetic that is most of the job, and
+  it leaves the processor free for the microphone, which matters because audio capture
+  runs in the same program and a dropped buffer loses words for good. It is the same
+  model either way: faster, not more accurate.
+- **What it costs, named before you press anything.** There is one ready-made Windows
+  build of whisper.cpp for NVIDIA and it carries NVIDIA's own maths libraries inside
+  it, so nothing has to be installed separately: 671 MB to download against the
+  processor build's 8 MB, and about a gigabyte on disk. The line under the model
+  pulldown names *both* figures first, and the tick-box is the consent — the same rule
+  the model download has always followed.
+- **An installation that already works is left alone.** Upgrading from 1.0.0 does not
+  replace a working processor build with a 671 MB download. The card is mentioned,
+  with what it would cost, and the choice stays yours. The two builds sit in separate
+  folders and share the speech models, so ticking the box never re-downloads a model.
+- **NVIDIA only, and only on Windows**, because whisper.cpp publishes no ready-made
+  Windows build for AMD or Intel graphics — a limit of what there is to download, not
+  a judgement about the hardware. On those machines the box does not appear. The
+  driver must be 528.33 or newer; an older one is named alongside the version needed,
+  since that is usually a ten-minute update rather than a dead end.
+- **New:** at the command line, `-local-cpu` declines the card, for a metered
+  connection or a small disk. `-local` on its own picks it up when there is one.
+- **Changed:** the **Running** line on the settings pane describes the server that is
+  actually running rather than whatever the pulldowns currently say. The server stays
+  up between sessions on purpose, so that pressing *Start listening* again does not
+  reload half a gigabyte — which meant changing the model mid-evening left the pane
+  describing one thing and a process doing another. It now names the model that is
+  loaded and says when your choice has moved on from it.
 
 ### 1.0.0 — 23 August 2026
 

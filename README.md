@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.0-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.1-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.1-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.1-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.1-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,29 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.1 — 25 August 2026
+
+- **New:** the top strip of the window says which engine is in use —
+  **`Engine: OpenAI`**, **`Engine: CPU`** or **`Engine: GPU`**. 1.1.0 added the
+  graphics card and then said so only in the *Transcription* row, which is on a
+  settings pane taller than the window: "is my card actually being used" cost a
+  scroll and a read, which is a poor answer to a question you ask precisely because
+  you are not sure. It is now visible with *Settings* collapsed and needs nothing
+  pressed.
+- It reports the **running server**, not the tick-box. The transcription server
+  stays up between sessions so that pressing *Start listening* again does not reload
+  half a gigabyte, so ticking *Use the graphics card* mid-session leaves the badge
+  reading `Engine: CPU` until the process it describes really is the card's. A badge
+  that followed the tick-box would have been claiming hardware that was not doing
+  the work.
+- `CPU` and `GPU` rather than the *processor* and *graphics card* the pane spells
+  out: everything on that strip competes with how narrow the window can be dragged,
+  and this is the first thing up there to set that minimum — 719px before, 836px
+  now, against the 880px the window opens at. The longer phrasing would have left
+  3px of that margin.
+- Nothing changes about how transcription works on either engine. This release only
+  says what was already true.
 
 ### 1.1.0 — 25 August 2026
 

@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.1-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.1-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.1-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.1-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.2-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.2-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.2-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.2-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,26 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.2 — 25 August 2026
+
+- **Fixed:** the **Use the graphics card** tick-box explains itself instead of
+  disappearing. On a computer with no NVIDIA card — most computers, and every
+  machine with AMD or Intel graphics — 1.1.1 simply left it out, and nothing
+  anywhere else mentioned graphics either, so the feature and the absence of the
+  feature looked identical. A control that is missing cannot say why it is missing.
+  It is shown greyed now, reading *no NVIDIA card on this computer* or *its driver
+  is too old* in its own label, which is where anyone hunting for it is looking.
+- **Fixed:** a box that cannot be ticked no longer shows a tick. Settings move
+  between machines, and a ticked box on a computer with no card read as "the card
+  is in use" on hardware that has none.
+- **Fixed:** a choice you were never offered is no longer recorded as one. Whether
+  the preference is saved was decided by asking whether the box was on screen, and
+  now that it is always on screen every machine without a card would have written
+  "not the graphics card" — which, restored onto a desktop that has one, would have
+  arrived having already declined it.
+- Nothing changes about how transcription works on either engine, or about what
+  gets downloaded.
 
 ### 1.1.1 — 25 August 2026
 

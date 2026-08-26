@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.2-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.2-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.2-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.2-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.3-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.3-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.3-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.3-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,29 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.3 — 26 August 2026
+
+**If you are on 1.1.1 or 1.1.2, take this one.**
+
+- **Fixed:** the main window resized itself and then refused to be resized. The
+  engine badge 1.1.1 added to the top strip is a text label, and a text label asks
+  for exactly the width its current words need — which the toolkit enforces on the
+  window in both directions, growing one that is too narrow and refusing to let you
+  drag below it. So the narrowest the window could be went from 719px to 836px, and
+  a window left narrower than that was pushed out at launch and would not go back.
+- **Fixed:** worse, the limit *moved*. The three captions are different lengths, so
+  it was 836px reading `Engine: OpenAI` and 814px reading `Engine: CPU` — switching
+  engine resized the window, and a width you could drag to a minute ago you
+  suddenly could not. The badge is also rewritten when you tick *Use the graphics
+  card* and whenever the transcription server starts or stops, none of which you
+  would connect to the top strip, which is why it looked random.
+- The badge may now shorten with an ellipsis, which uncouples its width from its
+  text. The floor is 741px and no longer moves — within 22px of what it was before
+  any of this existed, checked across every engine and graphics-card state. The
+  caption still shows in full unless you drag the window right in.
+- Nothing else changes: not how transcription works, not what gets downloaded, not
+  what the badge says.
 
 ### 1.1.2 — 25 August 2026
 

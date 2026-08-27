@@ -41,10 +41,10 @@ transcriber depends on and which is skipped in a second if you already have it. 
 an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.8-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.8-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.8-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.8-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.9-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.9-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.9-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.9-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -60,6 +60,29 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.9 — 27 August 2026
+
+**If the right-hand end of the settings pane looked cut off, this is the fix.** The
+band box showing "1.25" of "1.25m" is the one most people saw.
+
+- **Fixed:** the settings pane is now held clear of its own scrollbar. The pane is
+  always taller than the window, so it always has a bar down its right-hand side,
+  and that bar is painted on top of the pane rather than beside it. Every row with a
+  control at its right-hand end sat flush against that edge, so the bar covered part
+  of it — twelve units while the mouse was over the pane, six while it was not. Both
+  **Rescan** buttons, **Browse…**, **Default** and the **Band** box were affected.
+  The band box is much the narrowest at fifty-seven units, so it lost about a fifth
+  of itself, which is why it was the one that got reported. One inset in the place
+  the whole pane passes through holds every row clear at once; nothing in the app
+  had allowed for the bar anywhere before.
+
+This was reported as the right side being chopped off on a 1920x1080 laptop when the
+window was made smaller, and the window size turned out to have nothing to do with
+it: the loss was the same at every width and on every screen. Making the window
+narrower squeezes the frequency box beside it, which crowds that end of the row and
+is what draws the eye. Nothing else in the settings has moved and no setting has
+changed its meaning or its default.
 
 ### 1.1.8 — 27 August 2026
 

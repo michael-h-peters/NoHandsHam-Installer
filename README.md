@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.4-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.4-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.4-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.4-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.5-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.5-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.5-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.5-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,30 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.5 — 27 August 2026
+
+- **Fixed:** the settings now fit inside the window, however small you make it.
+  1.1.4 let the window be dragged narrow but left the form inside it wanting 719
+  units of width, so on a laptop the settings had to be scrolled sideways to be
+  read. The form asks for 436 now — less than the narrowest the window can be — so
+  the sideways scrollbar is there and never needed, and no setting is cut off at any
+  size.
+- **Changed:** the station row is two rows — *Call sign* and *Location* on the
+  first, *Freq* and *Band* on the second. *Park/Location* is now **Location** and
+  *Frequency* is now **Freq**, and each box is sized to what goes in it: a POTA
+  reference is `K-1234`, a band is `1.25m`. The call sign box keeps room for a
+  suffixed call like `KD2ABC/P`.
+- **Changed:** three tick boxes had whole sentences for labels. They have short
+  labels now with the sentence on the line underneath — moved, not dropped. *Send a
+  radio word list* keeps its guidance about stray words that way, and *Police
+  phonetics* keeps "Adam Boy Charles", which is the part you recognise. The two
+  transcription options lost only words the help line directly beneath them already
+  said. Nothing was removed and no setting moved section.
+- **Fixed:** two faults in the wrapping rows 1.1.4 introduced, which were costing 78
+  units of blank space below the top of the settings — a height that could only grow
+  once it had been measured at a narrow width, and a wrapped row that never told the
+  layout above it that it had grown.
 
 ### 1.1.4 — 27 August 2026
 

@@ -35,14 +35,16 @@ Both PDFs are installed alongside the program as well, and reachable from the
 **Documents** button in the window, so there is nothing to keep track of after the
 install.
 
-Double-click the `.exe` and answer the wizard. It carries everything it needs; there
-is no runtime to install first. For an install with no clicking:
+Double-click the `.exe` and answer the wizard. It carries everything it needs,
+including — from 1.1.8 — Microsoft's Visual C++ runtime, which the on-machine
+transcriber depends on and which is skipped in a second if you already have it. For
+an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.7-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.7-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.7-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.7-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.8-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.8-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.8-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.8-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +60,42 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.8 — 27 August 2026
+
+**If pressing *Start listening* told you "the transcription server stopped before it
+was ready", this is the fix.** It only ever happened when transcribing *on this
+computer*; the OpenAI engine was never affected.
+
+- **Fixed:** the installer now carries Microsoft's Visual C++ runtime. whisper.cpp,
+  the transcriber that runs on your own machine, is built with Microsoft's compiler
+  and needs that runtime; Windows does not include it, the whisper.cpp download does
+  not contain it, and until now neither did this installer. On a computer that had
+  never installed another program built the same way, Windows killed the
+  transcription server before a line of its own code ran — so it had no chance to
+  say anything, which is why the message was one sentence and the log pane under it
+  was empty. Any machine that has installed a game, Office or almost any other
+  desktop program already had the runtime and never saw this.
+- **New:** if the runtime is missing, the *Transcription* row says so and names where
+  to get it — **before** the download, so a machine that cannot run the transcriber
+  does not spend 671 MB finding that out. It is never removed when you uninstall
+  NoHandsHam, because other programs depend on the same runtime.
+- **Changed:** if the server fails to start for any reason, the message now carries
+  the exit status Windows gave and the last thing the server managed to print. The
+  two statuses that mean a missing runtime are named in plain words.
+- **Fixed:** settings you had changed could be replaced with the defaults.
+  NoHandsHam could not tell "no settings file yet" from "a settings file I failed to
+  read", so on a run where reading went wrong it treated the machine as brand new,
+  and the ten-second autosave then wrote defaults over the file it had just failed
+  to read. A settings file that cannot be read is never overwritten now.
+- **The installer is about 49 MB rather than 23.** Microsoft's redistributable is
+  half of it, it arrives already compressed, and carrying it is the difference
+  between the transcriber working on a clean machine and not.
+
+**Already on 1.1.7 and seeing this?** Installing 1.1.8 fixes it. If you would rather
+not reinstall, the runtime is a 25 MB download from Microsoft at
+[aka.ms/vs/17/release/vc_redist.x64.exe](https://aka.ms/vs/17/release/vc_redist.x64.exe)
+— install it, reopen NoHandsHam, and the server starts.
 
 ### 1.1.7 — 27 August 2026
 

@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.5-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.5-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.5-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.5-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.6-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.6-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.6-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.6-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,30 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.6 — 27 August 2026
+
+**If the right-hand side of the window has been off the edge of your laptop screen,
+this is the fix.**
+
+- **Fixed:** the window opens at a size the screen can actually show. It was not
+  about the width of anything inside it — the window was opening bigger than the
+  display. NoHandsHam measures the screen at start-up and cuts its opening size
+  down to fit, but it decided both dimensions together and abandoned the cut on
+  *both* if either looked implausible. An ordinary laptop is too short by that
+  measure: a 1366×768 panel at 150% scaling has about 450 of the units the app
+  counts in, against a threshold of 560. So the measurement was rejected, the width
+  cut went with it, and the window opened at its full 880 units on a screen 781
+  wide. Only 100% scaling escaped. Each dimension is judged on its own now, against
+  what a real desktop reports rather than what a roomy window would prefer.
+- Seven ordinary laptop configurations were checked, from 1366×768 at 100% through
+  1920×1080 at 250%. All of them now open inside the screen, title bar and borders
+  included.
+- Why it took a few goes: 1.1.4 and 1.1.5 made the window and the settings inside it
+  able to *become* small, and both were real fixes — the window can be dragged to
+  454 units and the form fits in 436, which is what makes this cut safe at any
+  screen size. Neither addressed the window still *opening* too large, which is what
+  put the right edge off the display.
 
 ### 1.1.5 — 27 August 2026
 

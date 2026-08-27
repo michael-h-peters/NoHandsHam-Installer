@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.6-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.6-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.6-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.6-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.7-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.7-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.7-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.7-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,41 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.7 — 27 August 2026
+
+**The four sliders start somewhere different.** If you have never touched them this
+changes what NoHandsHam does; if you have, your settings are kept and none of it
+reaches you.
+
+| slider | was | now |
+|---|---|---|
+| **Gain** | 0 | 0 — unchanged |
+| **Utterance length** | 25 s | **10 s** |
+| **Gate** | −42 dBFS | **−60 dBFS** |
+| **Margin above room noise** | +8 dB | **0 dB** |
+
+- **Changed:** the gate is open. The two sensitivity sliders together mean speech has
+  to beat whichever is higher of −60 dBFS and the measured room noise — and with the
+  margin at 0, that is the room noise itself with no gap above it. The old +8 dB gap
+  was protecting against something a radio feed does not have: this program is for a
+  receiver patched in on a cable, a line feed has no room noise, and the gap only
+  cost you the quiet stations. It does not switch the adapting off — the limit still
+  follows the noise up and down as the band changes, it just sits level with it.
+- **Changed:** an utterance is cut after 10 seconds rather than 25. A turn is
+  transcribed only once it ends, so that ceiling is the longest you can wait to see a
+  line of text; a talker who never pauses now appears in ten seconds. The price is
+  the model seeing less of the turn at once, which is why it stays a slider.
+- **The case these are wrong for is an open microphone in front of a loudspeaker** —
+  the gate will trip on the room. Raise **Margin** to +4, then +8. Both manuals now
+  say so where you would look for it.
+- **Fixed:** fifteen places in the manuals quoted the old numbers, and some advice had
+  become nonsense against the new floor — *"missing weak stations? lower the Gate
+  toward −50"* when it now starts at −60. Both slider walkthroughs, both worked
+  examples of the live reading, the chunking formula, the too-hot-and-too-cold section
+  and both symptom tables are rewritten rather than renumbered.
+- **Fixed:** two sentences still said settings are written only when you close the
+  window, which stopped being true when 1.1.4 started saving them every ten seconds.
 
 ### 1.1.6 — 27 August 2026
 

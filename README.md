@@ -39,10 +39,10 @@ Double-click the `.exe` and answer the wizard. It carries everything it needs; t
 is no runtime to install first. For an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.3-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.3-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.3-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.3-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.4-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.4-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.4-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.4-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -58,6 +58,35 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.4 — 27 August 2026
+
+**Two bug fixes, both worth taking.**
+
+- **Fixed:** settings no longer disappear when you upgrade. Most of what you set —
+  the call sign, the mode, the microphone, every slider, the transcription engine,
+  and the window's own size and position — used to be written only when you closed
+  the window. An upgrade never closes it politely: Windows Installer stops the
+  running copy so it can replace the files underneath it, and everything changed
+  since launch went with it. So did a crash's worth, or a flat battery's. Settings
+  are now written while you work: the pane is checked against the file every ten
+  seconds and saved when the two differ, so the most any of them can cost is the
+  last ten seconds. An untouched window writes nothing at all. The API key and the
+  QRZ password were never affected — they are sealed separately and were always
+  saved on the press.
+- **Fixed:** the window can be made small. A window cannot be dragged narrower than
+  its contents need, and the widest row that could not break held it at 741 units —
+  wider than a 13-inch laptop has to spare at 200% display scaling, so on those
+  machines it opened wider than the screen and could not be shrunk at all. The top
+  strip and the row of buttons at the foot now wrap onto a second line instead of
+  holding the window open, and the settings pane scrolls sideways rather than
+  setting a floor of its own. Where 1.1.3 snapped back to 794 pixels whatever you
+  asked for, 1.1.4 takes 520.
+- The trade on that second one: pull the window in far enough and it needs to be a
+  little taller, because those rows have wrapped and genuinely need the line.
+  Nothing moves at ordinary sizes.
+- **Changed:** the engine badge sits after the **?** on the top strip rather than in
+  the middle of it, which is what lets that row wrap.
 
 ### 1.1.3 — 26 August 2026
 

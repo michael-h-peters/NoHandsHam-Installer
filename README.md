@@ -41,10 +41,10 @@ transcriber depends on and which is skipped in a second if you already have it. 
 an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.9-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.9-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.9-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.9-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.1.10-x64.exe /quiet                     # silent
+.\NoHandsHam-1.1.10-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.1.10-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.1.10-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -60,6 +60,48 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.1.10 — 13 September 2026
+
+**New: NoHandsHam can listen to each utterance on your own computer first, and drop
+the ones that turned out to be noise rather than speech.** Off until you tick it.
+
+- **New:** **Check each utterance here first**, at the foot of the *Transcription*
+  row. NoHandsHam decides somebody is talking by how loud the audio is, because that
+  is the only thing there is to measure before the words exist — so a door closing, a
+  fan, or a burst of static on a quiet band can be loud enough to count, and then
+  that noise is sent off to be transcribed and comes back as words nobody said, very
+  often as a call sign. With this on, every utterance is first transcribed here by a
+  small local model, and what it heard is used two ways, each with its own tick box:
+  utterances it found no words in are **not sent at all** — not transcribed, not
+  billed, not written down — and the rest are sent with the draft as a prompt, so the
+  real transcriber starts with a rough idea of what it is about to hear. Fed three
+  seconds each of digital silence, mains hum and white noise, the local model returns
+  nothing at all for all three, which is what makes the first half work.
+- **New:** `-draft` does the same from a script, with `-draft-model`,
+  `-no-draft-gate` and `-no-draft-hint`.
+- **New:** if the check ever drops everything, the session line says so outright
+  rather than leaving you with an open microphone and an empty window — *nothing
+  transcribed: the local check found no speech in 8 utterances · untick it in
+  Settings if that is wrong*. The CLI prints the count when it stops.
+
+What it costs is about three-quarters of a second of your processor per utterance,
+before the utterance is sent, and nearly all of that is loading the model rather than
+listening to you. 147 MB the first time, and **Download** is the consent — nothing
+arrives because you ticked a box. Two models are offered, both English-only:
+**tiny.en** (124 MB) is the one to use, since it only has to spot the words and never
+to spell them, and **base.en** (287 MB) drafts better in twice the time. If you
+transcribe at OpenAI the first half pays for itself, because every utterance of
+static it stops is a minute you are not billed for; if you transcribe on this
+computer nothing is billed either way and what it buys you is a log without invented
+call signs in it.
+
+The models are Moonshine, under the MIT licence, run by sherpa-onnx under Apache
+2.0. NoHandsHam includes neither — pinned releases of both are fetched on the first
+Download, checked against a recorded fingerprint, and run unchanged. Nothing listens
+on your network and nothing is left running: the check is one short-lived program per
+utterance, gone when it has looked. Nothing else has changed, and no existing setting
+has changed its meaning or its default.
 
 ### 1.1.9 — 27 August 2026
 

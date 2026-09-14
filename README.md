@@ -41,10 +41,10 @@ transcriber depends on and which is skipped in a second if you already have it. 
 an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.1.10-x64.exe /quiet                     # silent
-.\NoHandsHam-1.1.10-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.1.10-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.1.10-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.2.0-x64.exe /quiet                     # silent
+.\NoHandsHam-1.2.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.2.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.2.0-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -60,6 +60,54 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.2.0 — 14 September 2026
+
+**New: a third place to transcribe.** NoHandsHam could already work the words out at
+OpenAI or on your own computer with whisper.cpp. It can now do it with **Vosk**,
+which is the light end of the range — about 53 MB to fetch against whisper.cpp's 473,
+and quick enough that the transcript arrives while the next station is still
+speaking.
+
+- **New:** *This computer — free and quick* on the **Transcription** row. Nothing is
+  uploaded, nothing is billed, no API key is needed and a net can be logged with the
+  cable out — the same bargain as whisper.cpp, at a tenth of the download. On the
+  machine this was built on it transcribed seven and a bit seconds of speech in under
+  a second, roughly an eighth of the time the speech itself took. No graphics card
+  and no Microsoft runtime needed.
+- **New:** two models, both English-only. **small-en-us-0.15** (39 MB) is the one to
+  use and is the whole point of this engine; **en-us-0.22-lgraph** (125 MB) makes
+  fewer mistakes for three times the download.
+- **New:** `-vosk` does the same from a script, with `-vosk-model`. Asking for
+  `-local` and `-vosk` in one run is an error rather than a guess at which you meant.
+- **New:** the top strip says `Engine: Vosk` while it is selected, beside the
+  `Engine: OpenAI`, `Engine: CPU` and `Engine: GPU` it already said.
+- **Fixed:** the `Model:` caption beside the whisper.cpp model pulldown was shown
+  even with OpenAI selected, standing on its own with nothing beside it. It now goes
+  away with the row it belongs to.
+
+What it costs is worth knowing before you switch. Vosk mis-hears more than
+whisper.cpp does, and for this program that means call signs — the error that matters
+most and the one you are least likely to notice. It writes in lower case with no
+punctuation at all, so a transcript reads like a telegram; call signs are still
+picked out and logged properly, because NoHandsHam reads those out of the phonetic
+alphabet and that does not need capitals. Your roster of known call signs does not
+help here the way it helps OpenAI, because Vosk cannot be told what it is about to
+hear — **Call signs to ignore** still works, and matters more.
+
+It is also the one engine that runs inside NoHandsHam rather than as a separate
+program. There is no port, nothing listening on your network and nothing left running
+if the app closes; the other side of it is that if Vosk itself falls over it takes
+NoHandsHam with it, where a crash in the whisper.cpp server costs one utterance.
+
+**Download** is the consent, as it is for the other engines — nothing arrives because
+you pressed a radio button, and the line under the pulldown says the size first. It
+lands in `%AppData%\whisper-listener\vosk`, which an upgrade leaves alone, and the
+two local engines share nothing: trying Vosk for an evening leaves your whisper.cpp
+installation exactly where it was. Vosk is Alpha Cephei's, under the Apache 2.0
+licence, and so are both models; NoHandsHam includes none of it. Nothing else has
+changed, no existing setting has changed its meaning or its default, and OpenAI is
+still what a fresh install uses.
 
 ### 1.1.10 — 13 September 2026
 

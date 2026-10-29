@@ -41,10 +41,10 @@ transcriber depends on and which is skipped in a second if you already have it. 
 an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.2.1-x64.exe /quiet                     # silent
-.\NoHandsHam-1.2.1-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.2.1-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.2.1-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.3.0-x64.exe /quiet                     # silent
+.\NoHandsHam-1.3.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.3.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.3.0-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -60,6 +60,44 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.3.0 — 29 October 2026
+
+**Removed: Vosk, and the local draft check.** NoHandsHam transcribes in two places
+again — at OpenAI, or with whisper.cpp on this computer. That is the choice it
+offered through 1.1.9, and the one it offers now.
+
+- **Removed:** *This computer — free and quick*, the Vosk engine added in 1.2.0. The
+  **Transcription** row has two options again, and `-vosk` and `-vosk-model` are no
+  longer flags.
+- **Removed:** **Check each utterance here first**, the Moonshine pre-pass added in
+  1.1.10 and given a settings row of its own in 1.2.1. The **Draft check** row goes
+  with it, along with `-draft`, `-draft-model`, `-no-draft-gate` and
+  `-no-draft-hint`.
+
+**If you were using Vosk, this moves you to whisper.cpp rather than to OpenAI.** Your
+settings file names an engine this version does not have, and the ordinary rule for
+that — fall back to OpenAI — is the one wrong answer here, because somebody who chose
+Vosk chose it to avoid needing an API key. whisper.cpp answers the same question:
+free, offline, no key, nothing uploaded. You will need to press **Download** once,
+and the line above the button says the size first. The diagnostics log records that
+the engine was changed.
+
+**If you were using the draft check**, nothing replaces it. What it was best at —
+stopping a burst of static being sent, billed, and coming back as a call sign nobody
+said — is the **Gate** and **Margin** sliders' job alone again. If invented call signs
+were what it was saving you from, **Call signs to ignore** is the other tool for that,
+and raising the **Gate** toward −45 is the first thing to try.
+
+**Your downloads are left alone.** Vosk and Moonshine stay on disk in
+`%AppData%\whisper-listener\vosk` and `...\moonshine` — about 500 MB between them if
+you had both. Nothing uses them now, and NoHandsHam does not delete files you
+downloaded; both folders are safe to remove by hand whenever you like. Your
+whisper.cpp install, in the `whisper` folder beside them, is untouched.
+
+Everything else is as it was. No setting has changed its meaning or its default, the
+settings pane is shorter by the two rows that went, and nothing about how utterances
+are heard, cut up, transcribed or logged has moved.
 
 ### 1.2.1 — 29 October 2026
 

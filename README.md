@@ -41,10 +41,10 @@ transcriber depends on and which is skipped in a second if you already have it. 
 an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.2.0-x64.exe /quiet                     # silent
-.\NoHandsHam-1.2.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.2.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.2.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.2.1-x64.exe /quiet                     # silent
+.\NoHandsHam-1.2.1-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.2.1-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.2.1-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -60,6 +60,46 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.2.1 — 29 October 2026
+
+**Changed: the draft check is its own setting.** Nothing about how NoHandsHam works
+has moved — this is about being able to tell two things apart on the settings pane.
+
+The **Transcription** row chooses where your words are worked out: OpenAI,
+whisper.cpp or Vosk. **Check each utterance here first** is not one of those — it is
+Moonshine, a small model that listens to each utterance before it is sent to decide
+whether it is worth sending at all, and it runs in front of whichever engine you
+picked. The two have always been separate installs with separate downloads, separate
+folders and separate Download buttons, and choosing an engine has never touched the
+check or the other way round. The pane did not say so: with *This computer — free and
+offline* selected and the check ticked, one row carried two model pulldowns, two
+Download buttons, two progress bars and two status lines, told apart only by a caption
+reading **Draft:** where the other read **Model:**.
+
+- **Changed:** the check and everything belonging to it — the two tick boxes, the
+  model pulldown, its Download button and its status line — now sit on a row of their
+  own called **Draft check**, below **Base URL**. The engine keeps the
+  **Transcription** row.
+- **Changed:** the status line names **Moonshine**, so the two Download buttons can be
+  told apart by reading rather than by guessing. Before the download it names
+  sherpa-onnx as well, the toolkit that runs the model — on its own beside a name like
+  `tiny.en` it read as an unexplained third thing being fetched.
+- **Changed:** both status lines say in words that this is a separate install from the
+  engine above, and the **?** beside each row explains the difference from its own
+  side.
+
+**Draft check** sits below **Model** and **Base URL** rather than directly under the
+radio buttons because those two boxes belong to the engine — it takes both over and
+greys them — so they finish the thought the **Transcription** row starts. A row
+slipped between a question and its own answer would read worse than the arrangement it
+replaced.
+
+The settings pane is the same width it was and the same height as it comes up, so
+nothing has been pushed below the fold to pay for this. Your settings carry over
+untouched: if you had the check on with a model chosen, it is still on, with the same
+model, in the same place on disk. No setting has changed its meaning or its default,
+and nothing about transcription itself has changed.
 
 ### 1.2.0 — 14 September 2026
 

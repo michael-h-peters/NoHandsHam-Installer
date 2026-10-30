@@ -41,10 +41,10 @@ transcriber depends on and which is skipped in a second if you already have it. 
 an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.3.2-x64.exe /quiet                     # silent
-.\NoHandsHam-1.3.2-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.3.2-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.3.2-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.3.3-x64.exe /quiet                     # silent
+.\NoHandsHam-1.3.3-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.3.3-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.3.3-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -60,6 +60,14 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.3.3 — 30 October 2026
+
+**Improved: phonetic call sign detection.** Added more spoken variants and improved token splitting for merged transcriptions.
+
+- **Added:** New digit and phonetic variants including `juliette`, `null`, `nada`, `unit`, and `to`.
+- **Improved:** Added automatic token splitting at letter-digit transitions (e.g., `whiskey1` now becomes `W1`).
+- **Improved:** Enhanced suffix recognition for `slant` and `dash` (e.g., `W1AW slant P`).
 
 ### 1.3.2 — 30 October 2026
 

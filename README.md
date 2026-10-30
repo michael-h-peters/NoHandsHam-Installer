@@ -41,10 +41,10 @@ transcriber depends on and which is skipped in a second if you already have it. 
 an install with no clicking:
 
 ```powershell
-.\NoHandsHam-1.3.0-x64.exe /quiet                     # silent
-.\NoHandsHam-1.3.0-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
-.\NoHandsHam-1.3.0-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
-.\NoHandsHam-1.3.0-x64.exe /uninstall /quiet          # remove it
+.\NoHandsHam-1.3.2-x64.exe /quiet                     # silent
+.\NoHandsHam-1.3.2-x64.exe /quiet ADDTOPATH=1         # also put nohandsham.exe on the PATH
+.\NoHandsHam-1.3.2-x64.exe /quiet DESKTOPSHORTCUT=0   # skip the desktop shortcut
+.\NoHandsHam-1.3.2-x64.exe /uninstall /quiet          # remove it
 ```
 
 Upgrades replace the installed copy where it stands. Nothing to uninstall first, and
@@ -60,6 +60,13 @@ the top strip of the window switches the checking off for good.
 ---
 
 ## Releases
+
+### 1.3.2 — 30 October 2026
+
+**Fixed: phonetic call sign detection.** Newer AI models often return transcriptions with hyphenated phonetic words (e.g., `whiskey-one-alpha-whiskey`), which NoHandsHam now recognizes.
+
+- **Fixed:** Hyphenated runs of phonetic words and digits are now correctly parsed into call signs.
+- **Fixed:** Hyphenated multi-word tokens like `double-u` are correctly identified as symbols.
 
 ### 1.3.0 — 29 October 2026
 
